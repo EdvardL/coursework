@@ -1,3 +1,8 @@
+//! @file courcework/app.h
+//! @author Лещинскас Э.Э.
+//! @note Ответственный: Полевой Д.В.
+//! @brief Заголовочный файл, который реализует логику приложения
+
 #define _USE_MATH_DEFINES
 
 #include <imgui/imgui.h>
@@ -24,6 +29,10 @@ public:
         float z;
     };
 
+    //!@brief Функция, которая расчитывает координаты точек
+    //  @param[in] radius - Радиус шара
+    //  @param[in] numPoints - Количество точек на шаре
+    //  @param[in] rotationAngle - Угол поворота шара
     std::vector<Point> calculatePointsOnSphere(int radius, int numPoints, int rotationAngle) {
         std::vector<Point> result;
 
@@ -45,6 +54,9 @@ public:
         return result;
     }
 
+    //!@brief Функция, которая реализует интерфейс приложения
+    //  @param[in] w - Ширина окна
+    // @param[in] h - Высота окна
     void display(int w, int h)
     {
         ImGui::SetNextWindowPos(ImVec2(0, 0));
@@ -93,12 +105,12 @@ public:
 
 private:
 
-    int numPoints_ = 0;
-    int radius_ = 0;
-    int angle_ = 0;
+    int numPoints_ = 0; //!< Количество точек на поверхности шара
+    int radius_ = 0; //!< Радиус шара
+    int angle_ = 0; //!< Угол поворота шара
 
     char nameString_[2048] = "";
 
     std::vector<std::pair<int, int> > points_{};
-    std::vector<Point> result;
+    std::vector<Point> result; //!< Список координат точек
 };
