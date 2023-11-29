@@ -36,13 +36,13 @@ public:
     std::vector<Point> calculatePointsOnSphere(int radius, int numPoints, int rotationAngle) {
         std::vector<Point> result;
 
-        double goldenAngle = M_PI * (3.0 - std::sqrt(5.0));  // Golden ratio angle
+        double goldenAngle = M_PI * (3.0 - std::sqrt(5.0));  // Угол золотого сечения
 
         for (int i = 0; i < numPoints; i++) {
-            float y = 1 - (i / static_cast<double>(numPoints - 1)) * 2;  // Range of [-1, 1]
-            float radiusOfSlice = std::sqrt(1 - y * y);  // Radius of the circle for current y
+            float y = 1 - (i / static_cast<double>(numPoints - 1)) * 2;  // Диапазон [-1, 1]
+            float radiusOfSlice = std::sqrt(1 - y * y);  // Радиус окружности для текущего y
 
-            float theta = goldenAngle * i + rotationAngle;  // Angle for current point
+            float theta = goldenAngle * i + rotationAngle;  // Угол для текущей точки
 
             float x = std::cos(theta) * radiusOfSlice;
             float z = std::sin(theta) * radiusOfSlice;
